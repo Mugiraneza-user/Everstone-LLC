@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/websites/LandingPage'
 import Service from './pages/websites/Services'
 import Testimony from './pages/websites/Testimonial';
+import ScrollToTop from './pages/websites/scrollToTop';
+
 const App: React.FC = () => {
   return (
+    
     <Router>
+       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/service" element={<Service />} />

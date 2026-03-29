@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/image/Logo 1.png";
+import { services } from "../../types/api";
 
 // ─── Shared Styles (identical to services.tsx) ─────────────────────────────────
 
@@ -648,6 +649,7 @@ function VideoHero({ visible }: { visible: boolean }) {
 // ─── Testimonials Page ────────────────────────────────────────────────────────
 
 function Footer() {
+    const navigate = useNavigate();
   return (
     <footer style={{ borderTop: "1px solid var(--border)", background: "var(--bg-card)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 48px 40px" }}>
@@ -673,6 +675,7 @@ function Footer() {
                 <div key={item} className="sans" style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10, cursor: "pointer" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                  onClick={()=> navigate("/service")}
                 >{item}</div>
               ))}
             </div>

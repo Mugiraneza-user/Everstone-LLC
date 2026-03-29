@@ -564,6 +564,7 @@ function Navbar() {
 // ─── Shared: Footer ────────────────────────────────────────────────────────────
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <footer style={{ borderTop: "1px solid var(--border)", background: "var(--bg-card)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 48px 40px" }}>
@@ -587,9 +588,13 @@ function Footer() {
             <div key={col.label}>
               <div className="sans" style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>{col.label}</div>
               {col.items.map((item) => (
-                <div key={item} className="sans" style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10, cursor: "pointer" }}
+                <div 
+                  key={item} 
+                  className="sans" 
+                  style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 10, cursor: "pointer" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                  onClick={()=> navigate("/service")}
                 >{item}</div>
               ))}
             </div>
