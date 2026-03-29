@@ -141,6 +141,7 @@ interface CaseStudy {
   metrics: { value: string; label: string }[];
   service: string;
   duration: string;
+  quoteCompany: string;
 }
 
 interface PullQuote {

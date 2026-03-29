@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { wasteItems, ticker, statsData, problemCards, whatWeFind, clientResults, services, whyItems, resultsMetrics } from "../../types/api";
-import { Link, Navigate , useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import logoImg from '../../assets/image/Logo 1.png';
 
 
