@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { wasteItems, ticker, statsData, problemCards, whatWeFind, clientResults, services, whyItems, resultsMetrics } from "../../types/api";
+import { Link, Navigate , useNavigate} from "react-router-dom";
+import logoImg from '../../assets/image/Logo 1.png';
+
 
 export default function EverstoneSystemsLanding() {
   const [scrolled, setScrolled] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate= useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -27,12 +33,39 @@ export default function EverstoneSystemsLanding() {
     sectionRefs.current.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+     if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+  };
+  handleResize();
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+ useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0,0);
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
 
   const setRef = (id: string) => (el: HTMLElement | null) => {
     if (el) sectionRefs.current.set(id, el);
   };
 
   const isVisible = (id: string) => visibleSections.has(id);
+   const navItems = [
+    { name: "Services", path: "/service" },
+    { name: "Testimonials", path: "/testimony" },
+    
+  ];
 
   return (
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", background: "#0d0d0b", color: "#e8e0d0", minHeight: "100vh", overflowX: "hidden" }}>
@@ -108,7 +141,7 @@ export default function EverstoneSystemsLanding() {
           transition: border-color 0.2s, color 0.2s;
           text-transform: uppercase;
         }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.06); }
 
         .btn-ghost {
           display: inline-flex;
@@ -180,7 +213,17 @@ export default function EverstoneSystemsLanding() {
         .waste-row:last-child { border-bottom: none; }
 
         .marquee-outer { overflow: hidden; }
-
+        .problem-grid{
+            display:grid;
+            gridTemplateColumns: 1fr 1fr;
+            gap:80;
+        
+        }
+        .problem-card {
+            display:grid;
+            gridTemplateColumns: repeat(5, 1fr);
+            gap : 1px
+            }
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; }
           .stats-grid { grid-template-columns: 1fr 1fr !important; }
@@ -189,57 +232,193 @@ export default function EverstoneSystemsLanding() {
           .why-grid { grid-template-columns: 1fr 1fr !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
           .hero-headline { font-size: clamp(42px, 8vw, 80px) !important; }
+          .problem-grid { grid-template-columns : 1fr, gap: 40px;}
+          ,problem-card {gridTemplateColumns: repeat(5, 1fr);}
+        }
+          @media (max-width: 600px){
+          .stats-grid { grid-template-columns: 1fr !important; }
+          .problem-card{gridTemplateColumns: 1fr;}
         }
       `}</style>
-
+     
       <nav
-        className="sans"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 48px",
-          height: "72px",
-          background: scrolled ? "rgba(13,13,11,0.96)" : "transparent",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid var(--border)" : "none",
-          transition: "all 0.3s ease",
-        }}
-      >
+              className="sans"
+              style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 100,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: isMobile ? "0 16px" : "0 48px",
+                height: "72px",
+                background: scrolled ? "rgba(13,13,11,0.96)" : "transparent",
+                backdropFilter: scrolled ? "blur(12px)" : "none",
+                borderBottom: scrolled ? "1px solid var(--border)" : "none",
+                transition: "all 0.3s ease",
+              }} >
         {/* Logo */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              background: "var(--gold)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "13px",
-              fontWeight: "700",
-              color: "#0d0d0b",
-              letterSpacing: "0.05em",
-            }}
-          >
-            ES
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", cursor :"pointer" }} onClick={()=> navigate("/")}>
+           <div style={{ width: 36, height: 36, background: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#0d0d0b", letterSpacing: "0.06em" , cursor: "pointer",overflow :"hidden" }} ><img src={logoImg} alt="Everstone Systems Logo"  style={{ width: "100%", height: "100%", objectFit : "contain"}}/></div>
           <div>
+           
             <div style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "0.14em", color: "#fff", textTransform: "uppercase" }}>Everstone Systems</div>
-            <div style={{ fontSize: "9px", fontWeight: "400", letterSpacing: "0.2em", color: "var(--text-muted)", textTransform: "uppercase", marginTop: "1px" }}>Manufacturing Performance</div>
+            <div style={{ marginTop : "10px",fontSize: "10px", fontWeight: "500", letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase" }}> Smart Manufacturing </div>
           </div>
         </div>
-
+          
         {/* CTA */}
-        <button className="btn-primary" style={{ fontSize: "10px", padding: "11px 22px" }}>
-          Book a Strategy Call
-        </button>
+        {!isMobile && (
+        <div style={{ display: "flex", alignItems: "center", gap: "32px" }}>
+          
+            <nav style={{ display: "flex", gap: "28px" }}>
+              {navItems.map((item) => (
+                <span key={item.name} style={{ fontSize: 10, fontWeight: 500, letterSpacing: "0.14em", color: item.name === "Services" ? "var(--gold)" : "var(--text-muted)", textTransform: "uppercase", cursor: "pointer", transition: "color 0.2s" }}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (item.name === "Services") navigate("/service");
+                    if (item.name === "Testimonials") navigate("/testimony");
+              }}
+               
+              onMouseEnter={(e) => { if (item.name !== "Services") (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
+              onMouseLeave={(e) => { if (item.name !== "Services") (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
+            >{item.name}</span>
+          ))}
+          </nav>
+          
+          <a href="https://calendly.com/everstonesystems/discovery-call" target="_blank" rel="noopener noreferrer">
+          <button className="btn-primary" style={{ fontSize: "10px", padding: "11px 22px" }}>
+            Book a Strategy Call
+          </button>
+          </a>
+        </div>
+        )}
+
+        {isMobile && (
+        <div  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          style={{
+            fontSize: "22px",
+            cursor: "pointer",
+            color: "#fff",
+            zIndex: 1001,
+            transition: "transform 0.3s ease"
+          }}
+        >
+          {mobileMenuOpen ? "✕" : "☰"}
+        </div>
+      )}
       </nav>
+       {/* Mobile Menu Overlay */}
+      {isMobile && mobileMenuOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: "rgba(13,13,11,0.98)",
+            backdropFilter: "blur(20px)",
+            zIndex: 1000,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "22px",
+            animation: "fadeIn 0.3s ease"
+          }}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <style>
+            {`
+              @keyframes fadeIn {
+                from {
+                  opacity: 0;
+                }
+                to {
+                  opacity: 1;
+                }
+              }
+              @keyframes slideUp {
+                from {
+                  opacity: 0;
+                  transform: translateY(20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            `}
+          </style>
+          
+          { navItems.map((item) => (
+            <span
+              key={item.name}
+              style={{
+                fontSize: "16px",
+                fontWeight: 500,
+                letterSpacing: "0.14em",
+                color: item.name === "Services" ? "var(--gold)" : "#fff",
+                cursor: "pointer",
+                transition: "all 0.2s",
+                animation: `slideUp 0.3s ease ${navItems.indexOf(item) * 0.1}s both`,
+                padding: "12px"
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setMobileMenuOpen(false);
+                navigate(item.path);
+              }}
+              onMouseEnter={(e) => {
+                if (item.name !== "Services") {
+                  (e.currentTarget as HTMLElement).style.color = "var(--gold)";
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1.1)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (item.name !== "Services") {
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                  (e.currentTarget as HTMLElement).style.transform = "scale(1)";
+                }
+              }}
+            >
+              {item.name}
+            </span>
+          ))}
+          
+          <a
+            href="https://calendly.com/everstonesystems/discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              animation: `slideUp 0.3s ease ${["Services", "Testimonials"].length * 0.1}s both`
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="btn-primary"
+              style={{
+                fontSize: "14px",
+                padding: "14px 28px",
+                cursor: "pointer",
+                border: "none",
+                borderRadius: "4px",
+                background: "var(--gold)",
+                color: "#0d0d0b",
+                fontWeight: 600,
+                letterSpacing: "0.1em",
+                marginTop: "16px"
+              }}
+            >
+              Book a Strategy Call
+            </button>
+          </a>
+        </div>
+      )}
+
 
       {/* ── HERO ── */}
       <section
@@ -258,7 +437,7 @@ export default function EverstoneSystemsLanding() {
         {/* Left */}
         <div>
           <div className="section-label" style={{ marginBottom: "24px" , color:"var(--gold)" }}>
-            For Manufacturers $5M–$50M · U.S. Operations
+            For Manufacturers $5M–$50M ·  Operations
           </div>
           <h1
             className="hero-headline"
@@ -297,8 +476,10 @@ export default function EverstoneSystemsLanding() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <button className="btn-primary">Book a Strategy Call</button>
-            <button className="btn-outline">Our Services</button>
+            <a href="https://calendly.com/everstonesystems/discovery-call" target="_blank" rel="noopener noreferrer">
+              <button className="btn-primary">Book a Strategy Call</button>
+            </a>
+            <button className="btn-outline" onClick={()=> navigate("/Service")}>Our Services</button>
           </div>
 
           <div className="sans" style={{ marginTop: "40px", fontSize: "10px", letterSpacing: "0.15em", color: "var(--text-dim)", textTransform: "uppercase" }}>
@@ -308,11 +489,6 @@ export default function EverstoneSystemsLanding() {
 
         {/* Right — Live Waste Panel */}
         <div
-          // style={{
-          //   background: "var(--bg-card)",
-               //color: "var(--text-muted)"
-               //color: "var(--text)" 
-          // }}
         >
           <div
             style={{
@@ -396,15 +572,15 @@ export default function EverstoneSystemsLanding() {
 
       {/* ── STATS STRIP ── */}
       <section
-        id="stats"
-        ref={setRef("stats")}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          borderBottom: "1px solid var(--border)",
-        }}
-        className="stats-grid"
-      >
+            id="stats"
+            ref={setRef("stats")}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              borderBottom: "1px solid var(--border)",
+            }}
+            className="stats-grid"
+          >
         {statsData.map((item, i) => (
           <div
             key={i}
@@ -443,7 +619,7 @@ export default function EverstoneSystemsLanding() {
         ref={setRef("problem")}
         style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto" }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "80px" }}>
+        <div style={{ display: "grid", gap: "80px", alignItems: "start", marginBottom: "80px",gridTemplateColumns: "1fr 1fr" }}>
           {/* Left */}
           <div className={`fade-up ${isVisible("problem") ? "visible" : ""}`}>
             <div className="section-label" >The Problem</div>
@@ -482,7 +658,7 @@ export default function EverstoneSystemsLanding() {
         </div>
 
         {/* Problem Cards */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "1px", background: "var(--border)" }}>
+        <div  style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)",gap: "1px", background: "var(--border)" }}>
           {problemCards.map((card, i) => (
             <div
               key={i}
@@ -587,6 +763,7 @@ export default function EverstoneSystemsLanding() {
         ref={setRef("what")}
         style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto" }}
       >
+       {!isMobile && (
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "80px", alignItems: "start" }}>
           {/* Left */}
           <div className={`fade-up ${isVisible("what") ? "visible" : ""}`} style={{ position: "sticky", top: "100px" }}>
@@ -637,6 +814,7 @@ export default function EverstoneSystemsLanding() {
             <div style={{ borderTop: "1px solid var(--border)" }} />
           </div>
         </div>
+       )}
       </section>
 
       {/* ── OUR SERVICES ── */}
@@ -696,7 +874,7 @@ export default function EverstoneSystemsLanding() {
                   ))}
                 </ul>
 
-                <button className="btn-ghost">
+                <button className="btn-ghost" onClick = {() => navigate("/Service")}>
                   {svc.cta} →
                 </button>
               </div>
@@ -883,15 +1061,23 @@ export default function EverstoneSystemsLanding() {
             className={`fade-up delay-3 ${isVisible("cta") ? "visible" : ""}`}
             style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", marginBottom: "24px" }}
           >
-            <button className="btn-primary" style={{ fontSize: "11px", padding: "16px 36px" }}>Book a Strategy Call</button>
-            <button className="btn-outline" style={{ fontSize: "11px", padding: "16px 36px" }}>Request a Factory Audit</button>
+            <a href="https://calendly.com/everstonesystems/discovery-call?" target="_blank" rel="noopener noreferrer">
+              <button className="btn-primary" style={{ fontSize: "11px", padding: "16px 36px" }}>
+                Book a Strategy Call
+              </button>
+            </a>
+            <a href="https://calendly.com/everstonesystems/factory-audit" target="_blank" rel="noopener noreferrer">
+              <button className="btn-outline" style={{ fontSize: "11px", padding: "16px 36px" }}>
+                Request a Factory Audit
+              </button>
+            </a>
           </div>
 
           <div
             className={`sans fade-up delay-4 ${isVisible("cta") ? "visible" : ""}`}
             style={{ fontSize: "9px", fontWeight: "500", letterSpacing: "0.2em", color: "var(--text-dim)", textTransform: "uppercase" }}
           >
-            Serving U.S. Manufacturers · $5M–$50M Annual Revenue
+            Serving Manufacturers · $5M–$50M Annual Revenue
           </div>
         </div>
       </section>
@@ -903,14 +1089,15 @@ export default function EverstoneSystemsLanding() {
             {/* Brand */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
-                <div style={{ width: "36px", height: "36px", background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "12px", fontWeight: "700", color: "#0d0d0b" }}>ES</div>
+                 <div style={{ width: 36, height: 36, background: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#0d0d0b", letterSpacing: "0.06em" , cursor: "pointer",overflow :"hidden" }} ><img src={logoImg} alt="Everstone Systems Logo"  style={{ width: "100%", height: "100%", objectFit : "contain"}}/></div>
                 <div>
+                 
                   <div className="sans" style={{ fontSize: "12px", fontWeight: "600", letterSpacing: "0.14em", color: "#fff", textTransform: "uppercase" }}>Everstone Systems</div>
-                  <div className="sans" style={{ fontSize: "9px", letterSpacing: "0.18em", color: "var(--text-muted)", textTransform: "uppercase" }}>Manufacturing Performance</div>
+                  <div className="sans" style={{marginTop :"10px", fontSize: "11px", letterSpacing: "0.18em", color: "var(--gold)", textTransform: "uppercase" }}>Smart Manufacturing </div>
                 </div>
               </div>
               <p className="sans" style={{ fontSize: "12px", lineHeight: "1.75", color: "var(--text-muted)" }}>
-                Helping U.S. manufacturing companies between $5M–$50M in revenue recover hidden cash, build scalable operations, and compete with discipline.
+                Helping  manufacturing companies between $5M–$50M in revenue recover hidden cash, build scalable operations, and compete with discipline.
               </p>
             </div>
 
@@ -921,6 +1108,7 @@ export default function EverstoneSystemsLanding() {
                 <div key={i} className="sans" style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "10px", cursor: "pointer", transition: "color 0.2s" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+                  onClick={() => navigate("/Service")}
                 >
                   {item}
                 </div>
