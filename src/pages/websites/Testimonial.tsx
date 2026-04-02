@@ -116,6 +116,9 @@ const globalStyles = `
   flex-direction: column;
   gap: 8px;
 } 
+.nav-item:hover {
+  color: var(--gold);
+}
   @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -417,7 +420,8 @@ function Navbar() {
             zIndex: 999,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            paddingTop:"60px",
+            // justifyContent: "center",
             alignItems: "center",
             gap: "22px",
             animation: "fadeIn 0.3s ease"
@@ -448,7 +452,7 @@ function Navbar() {
           </style>
           
           { navItems.map((item) => (
-            <span
+            <span className="nav-item"
               key={item.name}
               style={{
                 fontSize: "16px",
@@ -458,7 +462,9 @@ function Navbar() {
                 cursor: "pointer",
                 transition: "all 0.2s",
                 animation: `slideUp 0.3s ease ${navItems.indexOf(item) * 0.1}s both`,
-                padding: "12px"
+                padding: "12px",
+                
+                
               }}
               onClick={(e) => {
                 e.stopPropagation();

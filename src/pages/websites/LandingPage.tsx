@@ -324,13 +324,14 @@ export default function EverstoneSystemsLanding() {
             zIndex: 1000,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            paddingTop:"60px",
+            // justifyContent: "center",
             alignItems: "center",
             gap: "22px",
             animation: "fadeIn 0.3s ease"
           }}
           onClick={() => setMobileMenuOpen(false)}
-        >
+         >
           <style>
             {`
               @keyframes fadeIn {
@@ -359,7 +360,7 @@ export default function EverstoneSystemsLanding() {
               key={item.name}
               style={{
                 fontSize: "16px",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.14em",
                 color: item.name === "Services" ? "var(--gold)" : "#fff",
                 cursor: "pointer",
