@@ -520,7 +520,7 @@ function Navbar() {
 
 function VideoHero({ visible }: { visible: boolean }) {
   const [playing, setPlaying] = useState(false);
-   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+   const [isMobile] = useState(window.innerWidth < 768);
 
   return (
     <section style={{ padding: "120px 0 0", background: "var(--bg)"}}>

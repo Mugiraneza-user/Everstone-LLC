@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+
 
 interface WasteItem {
   category: string;
