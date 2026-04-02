@@ -651,7 +651,7 @@ export default function EverstoneSystemsLanding() {
               }}
             >
               <p className="sans" style={{ fontSize: "13px", lineHeight: "1.75", color: "var(--text-muted)" }}>
-                The U.S. Department of Commerce estimates that inefficiency and rework account for up to{" "}
+                The Department of Commerce estimates that inefficiency and rework account for up to{" "}
                 <strong style={{ color: "var(--text)" }}>25% of total manufacturing cost</strong> in facilities without formal operating systems. That's not overhead. That's profit sitting on your floor.
               </p>
             </div>
