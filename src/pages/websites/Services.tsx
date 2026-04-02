@@ -180,7 +180,7 @@ const services: ServiceDetail[] = [
     whatYouGet: [
       "A written recovery report with every finding quantified in dollars",
       "A prioritized action plan your team can execute immediately",
-      "Clarity on which problems to fix first — and why",
+      "Clarity on which problems to fix first  and why",
       "A baseline to measure all future improvement against",
     ],
     timeline: "4–6 weeks from kickoff to final report",
@@ -198,7 +198,7 @@ const services: ServiceDetail[] = [
     number: "02",
     name: "Implementation",
     italic: "Support",
-    tagline: "Drive change from the floor up — not just from the whiteboard.",
+    tagline: "Drive change from the floor up  not just from the whiteboard.",
     description:
       "Most improvement initiatives fail because they stay on paper. We embed with your team and drive changes from the production floor upward — scrap reduction programs, workflow redesign, KPI systems, and management routines that stick. We don't hand you a plan and leave. We stay until the numbers move.",
     whatItIncludes: [
@@ -280,7 +280,7 @@ const services: ServiceDetail[] = [
     whatYouGet: [
       "Live production visibility from anywhere, any time",
       "20+ hours per week saved from manual data entry",
-      "Decisions made on real-time data — not yesterday's numbers",
+      "Decisions made on real-time data not yesterday's numbers",
       "A data foundation for every future improvement initiative",
     ],
     timeline: "2–4 weeks from scoping to live deployment",
@@ -306,7 +306,7 @@ const processSteps: ProcessStep[] = [
     number: "02",
     title: "On-Site Assessment",
     description:
-      "We spend time on your floor — watching, measuring, and asking the right questions. We never form conclusions from spreadsheets alone.",
+      "We spend time on your floor  watching, measuring, and asking the right questions. We never form conclusions from spreadsheets alone.",
     duration: "1–2 days",
   },
   {
@@ -501,7 +501,7 @@ function Navbar() {
               key={item.name}
               style={{
                 fontSize: "16px",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.14em",
                 color: item.name === "Services" ? "var(--gold)" : "#fff",
                 cursor: "pointer",
@@ -605,7 +605,7 @@ function Footer() {
         </div>
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div className="sans" style={{ fontSize: 11, color: "var(--text-dim)" }}>© 2026 Everstone Systems LLC. All rights reserved.</div>
-          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems · Manufacturing Performance</div>
+          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems ·Smart Manufacturing</div>
         </div>
       </div>
     </footer>

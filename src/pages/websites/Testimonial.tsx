@@ -174,7 +174,7 @@ const caseStudies: CaseStudy[] = [
     industry: "Metal Fabrication",
     revenue: "$14M Annual Revenue",
     headline: "Waste Recovery in a Growing Fab Shop",
-    subheadline: "$380K in annual recoverable waste — found in four weeks.",
+    subheadline: "$380K in annual recoverable waste found in four weeks.",
     situation:
       "A 14-year-old weld fabrication shop outside Columbus, Ohio had grown steadily to $14M in annual revenue but margins had been thinning for three years running. The owner assumed the culprit was material cost increases. Reporting was manual — supervisors filled out shift logs by hand, 18–24 hours after each shift ended. Scrap was tracked as a percentage of material cost and simply written off.",
     approach:
@@ -234,7 +234,7 @@ const caseStudies: CaseStudy[] = [
     approach:
       "We scoped and deployed an AI automation solution in 18 days. Tablet-based interfaces were installed at each production cell, feeding data directly into a live dashboard. AI-generated shift summaries were delivered automatically to the plant manager and owner each morning. Exception alerts fired in real time when a line went down or a defect threshold was breached. The system integrated directly with their existing ERP, eliminating double-entry entirely.",
     outcome:
-      "From deployment day, supervisors were freed from manual reporting entirely — a combined savings of 20+ hours per week across the shift team. The owner reported that the morning AI summary replaced three separate phone calls he used to make every morning. Within 30 days, two chronic downtime patterns were identified and corrected that had been invisible under the old reporting system. ROI was calculated at 14× within the first six months.",
+      "From deployment day, supervisors were freed from manual reporting entirely a combined savings of 20+ hours per week across the shift team. The owner reported that the morning AI summary replaced three separate phone calls he used to make every morning. Within 30 days, two chronic downtime patterns were identified and corrected that had been invisible under the old reporting system. ROI was calculated at 14× within the first six months.",
     quote:
       "We went from flying blind to having a co-pilot. The morning AI summary tells me everything I need to walk the floor with confidence. I can't imagine running the plant without it now.",
     quoteName: "Robert T.",
@@ -452,7 +452,7 @@ function Navbar() {
               key={item.name}
               style={{
                 fontSize: "16px",
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: "0.14em",
                 color: item.name === "Testimonials" ? "var(--gold)" : "#fff",
                 cursor: "pointer",
@@ -704,7 +704,7 @@ function Footer() {
         </div>
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div className="sans" style={{ fontSize: 11, color: "var(--text-dim)" }}>© 2026 Everstone Systems LLC. All rights reserved.</div>
-          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems · Smart Manufacturing </div>
+          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems ·Smart Manufacturing </div>
         </div>
       </div>
     </footer>
