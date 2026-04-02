@@ -603,7 +603,7 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "grid",gap:"15px",gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", justifyContent: "space-between", alignItems: "center" }}>
           <div className="sans" style={{ fontSize: 11, color: "var(--text-dim)" }}>© 2026 Everstone Systems LLC. All rights reserved.</div>
           <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems ·Smart Manufacturing</div>
         </div>

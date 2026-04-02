@@ -1145,12 +1145,12 @@ export default function EverstoneSystemsLanding() {
           </div>
 
           {/* Bottom bar */}
-          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
+          <div style={{ borderTop: "1px solid var(--border)", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "15px" }}>
             <div className="sans" style={{ fontSize: "11px", color: "var(--text-dim)" }}>
               © 2026 Everstone Systems LLC. All rights reserved.
             </div>
             <div className="sans" style={{ fontSize: "11px", color: "var(--text-dim)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-              EVERSTONE SYSTEMS · Smart Manufacturing 
+              EVERSTONE SYSTEMS ·Smart Manufacturing 
             </div>
           </div>
         </div>
