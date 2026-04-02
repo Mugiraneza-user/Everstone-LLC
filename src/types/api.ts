@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 interface WasteItem {
   category: string;
   label: string;
@@ -156,10 +158,12 @@ const clientResults: ResultCard[] = [
 ];
 
 const whyItems: WhyItem[] = [
-  { icon: "🔍", title: "Floor-Up Expertise", description: "Our consultants have worked inside manufacturing plants — not just in boardrooms. We earn trust on the floor first." },
-  { icon: "📐", title: "Built for Your Scale", description: "Frameworks, pricing, and timelines designed for $5M–$50M manufacturers — not adapted down from Fortune 500 programs." },
-  { icon: "⚡", title: "Fast to Value", description: "Most clients see measurable improvement within 60 days. We prioritize high-impact, fast-win actions before long-cycle work." },
-  { icon: "🛡", title: "Results-Backed", description: "If we don't find recoverable value that exceeds our fee, you don't pay the balance. That's how confident we are." },
+  
+
+  { icon: "fa-solid fa-people-pulling" , title: "Floor-Up Expertise", description: "Our consultants have worked inside manufacturing plants not just in boardrooms. We earn trust on the floor first." },
+  { icon: "fa-solid fa-arrow-trend-up", title: "Built for Your Scale", description: "Frameworks, pricing, and timelines designed for $5M–$50M manufacturers not adapted down from Fortune 500 programs." },
+  { icon: "fa-solid fa-arrow-up-right-dots", title: "Fast to Value", description: "Most clients see measurable improvement within 60 days. We prioritize high-impact, fast-win actions before long-cycle work." },
+  { icon: "fa-solid fa-shield-alt", title: "Results-Backed", description: "If we don't find recoverable value that exceeds our fee, you don't pay the balance. That's how confident we are." },
 ];
 
 const ticker = ["Cash Recovery Audit™", "FORGE™ Operating System", "AI Process Automation", "Scrap & Rework Reduction", "KPI Visibility Systems", "Management Routines"];

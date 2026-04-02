@@ -229,8 +229,8 @@ export default function EverstoneSystemsLanding() {
           .stats-grid { grid-template-columns: 1fr 1fr !important; }
           .services-grid { grid-template-columns: 1fr !important; }
           .results-grid { grid-template-columns: 1fr !important; }
-          .why-grid { grid-template-columns: 1fr 1fr !important; }
-          .footer-grid { grid-template-columns: 1fr 1fr !important; }
+          .why-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; }
+          .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; }
           .hero-headline { font-size: clamp(42px, 8vw, 80px) !important; }
           .problem-grid { grid-template-columns : 1fr, gap: 40px;}
           ,problem-card {gridTemplateColumns: repeat(5, 1fr);}
@@ -475,16 +475,16 @@ export default function EverstoneSystemsLanding() {
             Everstone Systems helps <strong style={{ color: "var(--text)", fontWeight: "600" }}>U.S. manufacturing companies</strong> with $5M–$50M in revenue identify hidden operational waste, recover lost profit, and build the systems to make sure it never returns.
           </p>
 
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap"  }}>
             <a href="https://calendly.com/everstonesystems/discovery-call" target="_blank" rel="noopener noreferrer">
               <button className="btn-primary">Book a Strategy Call</button>
             </a>
             <button className="btn-outline" onClick={()=> navigate("/Service")}>Our Services</button>
           </div>
 
-          <div className="sans" style={{ marginTop: "40px", fontSize: "10px", letterSpacing: "0.15em", color: "var(--text-dim)", textTransform: "uppercase" }}>
+          {/* <div className="sans" style={{ marginTop: "40px", fontSize: "10px", letterSpacing: "0.15em", color: "var(--text-dim)", textTransform: "uppercase" }}>
             ↓ Scroll to explore
-          </div>
+          </div> */}
         </div>
 
         {/* Right — Live Waste Panel */}
@@ -618,8 +618,8 @@ export default function EverstoneSystemsLanding() {
         id="problem"
         ref={setRef("problem")}
         style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto" }}
-      >
-        <div style={{ display: "grid", gap: "80px", alignItems: "start", marginBottom: "80px",gridTemplateColumns: "1fr 1fr" }}>
+       >
+        <div style={{ display: "grid", gap: "80px", alignItems: "start", marginBottom: "80px",gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
           {/* Left */}
           <div className={`fade-up ${isVisible("problem") ? "visible" : ""}`}>
             <div className="section-label" >The Problem</div>
@@ -658,7 +658,7 @@ export default function EverstoneSystemsLanding() {
         </div>
 
         {/* Problem Cards */}
-        <div  style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)",gap: "1px", background: "var(--border)" }}>
+        <div  style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr)) ",gap: "1px", background: "var(--border)" }}>
           {problemCards.map((card, i) => (
             <div
               key={i}
@@ -670,7 +670,7 @@ export default function EverstoneSystemsLanding() {
               }}
             >
               <div style={{ fontSize: "28px", marginBottom: "16px", opacity: 0.8 }}>{card.icon}</div>
-              <div className="sans" style={{ fontSize: "9px", fontWeight: "600", letterSpacing: "0.2em", color: "red", textTransform: "uppercase", marginBottom: "10px" }}>
+              <div className="sans" style={{ fontSize: "9px", fontWeight: "600", letterSpacing: "0.2em", color: "red", textTransform: "uppercase", marginBottom: "10px", }}>
                 {card.rate}
               </div>
               <div style={{ fontSize: "20px", fontWeight: "400", color: "#fff", marginBottom: "12px" }}>{card.title}</div>
@@ -889,7 +889,7 @@ export default function EverstoneSystemsLanding() {
         ref={setRef("results")}
         style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto" }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start", marginBottom: "72px", }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "80px", alignItems: "start", marginBottom: "72px", }}>
           <div className={`fade-up ${isVisible("results") ? "visible" : ""}`}>
             <div className="section-label">Proven Results</div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 4vw, 64px)", fontWeight: "300", lineHeight: "1.1", color: "#fff" }}>
@@ -921,7 +921,7 @@ export default function EverstoneSystemsLanding() {
         </div>
 
         {/* Metrics */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "var(--border)", marginBottom: "72px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1px", background: "var(--border)", marginBottom: "72px" }}>
           {resultsMetrics.map((m, i) => (
             <div key={i} style={{ background: "var(--bg-card)", padding: "44px 40px" }}>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(40px, 4vw, 60px)", fontWeight: "300", color: "var(--gold)", letterSpacing: "-0.02em", lineHeight: 1, marginBottom: "12px" }}>
@@ -982,14 +982,14 @@ export default function EverstoneSystemsLanding() {
         ref={setRef("why")}
         style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", background: "var(--border)", gap: "1px" }} className="why-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", background: "var(--border)", gap: "1px" }} className="why-grid">
           {whyItems.map((item, i) => (
             <div
               key={i}
               className={`card-hover fade-up delay-${i + 1} ${isVisible("why") ? "visible" : ""}`}
               style={{ background: "var(--bg-card)", padding: "48px 36px" }}
             >
-              <div style={{ fontSize: "32px", marginBottom: "20px" }}>{item.icon}</div>
+              <div style={{ fontSize: "32px", marginBottom: "20px", color:"var(--gold)" }}><i className={item.icon}></i></div>
               <h3 style={{ fontSize: "20px", fontWeight: "400", color: "#fff", marginBottom: "14px" }}>{item.title}</h3>
               <p className="sans" style={{ fontSize: "12px", lineHeight: "1.7", color: "var(--text-muted)" }}>{item.description}</p>
             </div>
@@ -1150,7 +1150,7 @@ export default function EverstoneSystemsLanding() {
               © 2026 Everstone Systems LLC. All rights reserved.
             </div>
             <div className="sans" style={{ fontSize: "11px", color: "var(--text-dim)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
-              EVERSTONE SYSTEMS · Manufacturing Performance
+              EVERSTONE SYSTEMS · Smart Manufacturing 
             </div>
           </div>
         </div>

@@ -111,6 +111,11 @@ const globalStyles = `
     animation: ticker 22s linear infinite;
     white-space: nowrap;
   }
+  .video-bottom-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+} 
   @keyframes ticker {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -122,6 +127,14 @@ const globalStyles = `
     .stats-row { grid-template-columns: 1fr 1fr !important; }
     .video-hero-grid { flex-direction: column !important; }
   }
+  @media (min-width: 600px) {
+  .video-bottom-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .stats-row {display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)) !important; gap:0 }  
+}  
 `;
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -507,16 +520,17 @@ function Navbar() {
 
 function VideoHero({ visible }: { visible: boolean }) {
   const [playing, setPlaying] = useState(false);
+   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   return (
-    <section style={{ padding: "120px 0 0", background: "var(--bg)" }}>
+    <section style={{ padding: "120px 0 0", background: "var(--bg)"}}>
       {/* Text header */}
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 48px 64px" }}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0 }} className="video-hero-grid">
           <div className={`fade-up ${visible ? "visible" : ""}`} style={{ marginBottom: 16 }}>
             <div className="section-label">Client Results</div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, width: "100%", alignItems: "end" }}>
+          <div style={{ display: "grid", gridTemplateColumns:"repeat(auto-fit, minmax(200px,1fr))", gap: 80, width: "100%", alignItems: "end" }}>
             <h1 className={`fade-up d1 ${visible ? "visible" : ""}`}
               style={{ fontSize: "clamp(52px, 5.5vw, 88px)", fontWeight: 300, lineHeight: 1.05, color: "#fff", letterSpacing: "-0.01em" }}>
               Real factories.
@@ -542,9 +556,12 @@ function VideoHero({ visible }: { visible: boolean }) {
           position: "relative",
           maxWidth: 1400,
           margin: "0 auto 0",
-          padding: "0 48px",
+          padding: "0 24px",
+          display:"grid",
+          gap:"18px",
+          
         }}
-      >
+         >
         <div
           style={{
             position: "relative",
@@ -554,6 +571,8 @@ function VideoHero({ visible }: { visible: boolean }) {
             overflow: "hidden",
             border: "1px solid var(--border)",
             cursor: "pointer",
+            minHeight: "150px",
+
           }}
           onClick={() => setPlaying(true)}
         >
@@ -573,7 +592,7 @@ function VideoHero({ visible }: { visible: boolean }) {
           {/* Overlay text */}
           {!playing && (
             <>
-              <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 24px" }}>
                 {/* Play button */}
                 <div style={{ position: "relative", marginBottom: 28 }}>
                   <div className="play-btn-ring" />
@@ -604,14 +623,16 @@ function VideoHero({ visible }: { visible: boolean }) {
               {/* Bottom bar */}
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0,
-                padding: "20px 36px",
+                padding: "16px 18px",
                 background: "linear-gradient(to top, rgba(13,13,11,0.95) 0%, transparent 100%)",
-                display: "flex", justifyContent: "space-between", alignItems: "flex-end",
-              }}>
+                display: "flex", flexDirection:"column", gap:"8px",
+              }} className="video-bottom-bar">
+                {!isMobile && (
                 <div>
                   <div className="sans" style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: 4 }}>Featured In This Film</div>
-                  <div className="sans" style={{ fontSize: 12, color: "var(--text-muted)" }}>Dave M. · Sarah K. · Robert T. — Real clients, real results.</div>
+                  <div className="sans" style={{ fontSize: 12, color: "var(--text-muted)" ,wordBreak:"break-word"}}>Dave M. · Sarah K. · Robert T. — Real clients, real results.</div>
                 </div>
+                )}
                 <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems · 2025</div>
               </div>
             </>
@@ -653,13 +674,13 @@ function Footer() {
   return (
     <footer style={{ borderTop: "1px solid var(--border)", background: "var(--bg-card)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 48px 40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px,1fr))", gap: 48, marginBottom: 56 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                <div style={{ width: 36, height: 36, background: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#0d0d0b", letterSpacing: "0.06em" , cursor: "pointer",overflow :"hidden" }} ><img src={logoImg} alt="Everstone Systems Logo"  style={{ width: "100%", height: "100%", objectFit : "contain"}}/></div>
               <div>
                 <div className="sans" style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.14em", color: "#fff", textTransform: "uppercase" }}>Everstone Systems</div>
-                <div className="sans" style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--text-muted)", textTransform: "uppercase" }}>Manufacturing Performance</div>
+                <div className="sans" style={{ fontSize: 9, letterSpacing: "0.18em", color: "var(--text-muted)", textTransform: "uppercase" }}>Smart Manufacturing</div>
               </div>
             </div>
             <p className="sans" style={{ fontSize: 12, lineHeight: "1.75", color: "var(--text-muted)" }}>Helping U.S. manufacturing companies between $5M–$50M recover hidden cash, build scalable operations, and compete with discipline.</p>
@@ -667,7 +688,7 @@ function Footer() {
           {[
             { label: "Services", items: ["Factory Cash Recovery Audit™", "Implementation Support", "FORGE™ Operating System", "AI Automation"] },
             { label: "Who We Serve", items: ["Metal Fabrication", "Plastics & Composites", "Electronics Assembly", "Industrial Equipment", "Packaging & Converting"] },
-            { label: "Get Started", items: ["Book a Strategy Call", "Request a Factory Audit", "hello@everstone-systems.com"] },
+            { label: "Get Started", items: ["Book a Strategy Call", "Request a Factory Audit", "info@everstonesystems.com"] },
           ].map((col) => (
             <div key={col.label}>
               <div className="sans" style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>{col.label}</div>
@@ -683,7 +704,7 @@ function Footer() {
         </div>
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div className="sans" style={{ fontSize: 11, color: "var(--text-dim)" }}>© 2026 Everstone Systems LLC. All rights reserved.</div>
-          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems · Manufacturing Performance</div>
+          <div className="sans" style={{ fontSize: 10, letterSpacing: "0.14em", color: "var(--text-dim)", textTransform: "uppercase" }}>Everstone Systems · Smart Manufacturing </div>
         </div>
       </div>
     </footer>
@@ -721,7 +742,7 @@ export default function TestimonialsPage() {
       </div>
 
       {/* ── AGGREGATE STATS ── */}
-      <section id="stats" ref={setRef("stats")} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", borderBottom: "1px solid var(--border)" }} className="stats-row">
+      <section id="stats" ref={setRef("stats")} style={{ borderBottom: "1px solid var(--border)" }} className="stats-row">
         {aggregateStats.map((stat, i) => (
           <div key={i} className={`fade-up d${i + 1} ${statsV ? "visible" : ""}`}
             style={{ padding: "52px 40px", borderRight: i < 3 ? "1px solid var(--border)" : "none" }}>
@@ -755,7 +776,7 @@ export default function TestimonialsPage() {
                 <p style={{ fontSize: "clamp(18px, 2vw, 26px)", fontWeight: 300, color: "var(--gold)", fontStyle: "italic", marginBottom: 32 }}>{cs.subheadline}</p>
 
                 {/* Metrics */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "var(--border)" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 1, background: "var(--border)" }}>
                   {cs.metrics.map((m, j) => (
                     <div key={j} style={{ background: i % 2 === 1 ? "var(--bg)" : "var(--bg-card)", padding: "20px 22px" }}>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 6 }}>{m.value}</div>

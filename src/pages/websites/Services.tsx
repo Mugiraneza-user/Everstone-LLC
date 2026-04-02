@@ -125,6 +125,9 @@ const globalStyles = `
     .process-grid { grid-template-columns: 1fr !important; }
     .compare-grid { grid-template-columns: 1fr !important; }
   }
+  @media (max-width: 600px) {
+    .services-hero-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; }
+  }  
 `;
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -163,7 +166,7 @@ const services: ServiceDetail[] = [
     italic: "Audit™",
     tagline: "Find every dollar your plant is losing — with precision.",
     description:
-      "A structured, on-site investigation that quantifies every significant source of operational waste in your facility and delivers a prioritized, dollar-valued recovery roadmap. Most clients are stunned by what we find — not because the problems are new, but because no one has ever put a real dollar figure on them.",
+      "A structured, on-site investigation that quantifies every significant source of operational waste in your facility and delivers a prioritized, dollar-valued recovery roadmap. Most clients are stunned by what we find not because the problems are new, but because no one has ever put a real dollar figure on them.",
     whatItIncludes: [
       "Full financial picture of scrap, rework, and quality cost",
       "Unplanned downtime analysis with true hourly cost",
@@ -568,7 +571,7 @@ function Footer() {
   return (
     <footer style={{ borderTop: "1px solid var(--border)", background: "var(--bg-card)" }}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "72px 48px 40px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 48, marginBottom: 56 }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
               {/* <div style={{ width: 34, height: 34, background: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#0d0d0b" }}>ES</div> */}
@@ -583,7 +586,7 @@ function Footer() {
           {[
             { label: "Services", items: ["Factory Cash Recovery Audit™", "Implementation Support", "FORGE™ Operating System", "AI Automation"] },
             { label: "Who We Serve", items: ["Metal Fabrication", "Plastics & Composites", "Electronics Assembly", "Industrial Equipment", "Packaging & Converting"] },
-            { label: "Get Started", items: ["Book a Strategy Call", "Request a Factory Audit", "hello@everstone-systems.com"] },
+            { label: "Get Started", items: ["Book a Strategy Call", "Request a Factory Audit", "info@everstonesystems.com"] },
           ].map((col) => (
             <div key={col.label}>
               <div className="sans" style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: 20 }}>{col.label}</div>
@@ -631,7 +634,7 @@ export default function ServicesPage() {
         id="hero"
         ref={setRef("hero")}
         style={{ minHeight: "70vh", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "140px 48px 80px", maxWidth: 1400, margin: "0 auto" }}
-      >
+       >
         <div className={`fade-up ${heroV ? "visible" : ""}`} style={{ marginBottom: 16 }}>
           <div className="section-label">Our Services</div>
         </div>
@@ -653,9 +656,9 @@ export default function ServicesPage() {
               <strong style={{ color: "var(--text)" }}>In that exact order.</strong>
             </p>
             <p className="sans" style={{ fontSize: 14, lineHeight: 1.8, color: "var(--text-muted)", marginBottom: 36 }}>
-              Each service stands on its own — but they're designed to build on each other. Most clients begin with an audit. What they discover determines what comes next.
+              Each service stands on its own  but they're designed to build on each other. Most clients begin with an audit. What they discover determines what comes next.
             </p>
-            <div style={{ display: "flex", gap: 12 }}>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <a  href="https://calendly.com/everstonesystems/discovery-call" target="_blank" rel="noopener noreferrer">
                 <button className="btn-primary">Request a Factory Audit</button>
               </a>
@@ -681,7 +684,7 @@ export default function ServicesPage() {
       </div>
 
       {/* ── SERVICE OVERVIEW STRIP ── */}
-      <section id="overview" ref={setRef("overview")} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", borderBottom: "1px solid var(--border)" }}>
+      <section id="overview" ref={setRef("overview")} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", borderBottom: "1px solid var(--border)" }}>
         {services.map((svc, i) => (
           <a
             key={i}
@@ -737,7 +740,7 @@ export default function ServicesPage() {
                 <p className="sans" style={{ fontSize: 15, lineHeight: 1.8, color: "var(--text-muted)", marginBottom: 36 }}>{svc.description}</p>
 
                 {/* Metrics */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 1, background: "var(--border)" }}>
+                <div style={{ display: "grid", gridTemplateColumns: " repeat(auto-fit, minmax(200px, 1fr))", gap: 1, background: "var(--border)" }}>
                   {svc.metrics.map((m, j) => (
                     <div key={j} style={{ background: i % 2 === 1 ? "var(--bg)" : "var(--bg-card)", padding: "22px 20px" }}>
                       <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300, color: "var(--gold)", lineHeight: 1, marginBottom: 6 }}>{m.value}</div>
@@ -782,7 +785,7 @@ export default function ServicesPage() {
                   ))}
                 </div>
 
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 28 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 28 }}>
                   <div style={{ padding: "16px 18px", border: "1px solid var(--border)", background: "rgba(201,168,76,0.03)" }}>
                     <div className="sans" style={{ fontSize: 9, fontWeight: 600, letterSpacing: "0.18em", color: "var(--text-dim)", textTransform: "uppercase", marginBottom: 6 }}>Timeline</div>
                     <div style={{ fontSize: 15, fontWeight: 400, color: "var(--text)" }}>{svc.timeline}</div>
