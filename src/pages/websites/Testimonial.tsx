@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import logoImg from "../../assets/image/Logo 1.png";
+import video from "../../assets/image/AI Manufacturing.mp4"
 
 
 // ─── Shared Styles (identical to services.tsx) ─────────────────────────────────
@@ -650,7 +651,8 @@ function VideoHero({ visible }: { visible: boolean }) {
               {/* Replace this src with your actual video URL */}
               <iframe
                 style={{ width: "100%", height: "100%", border: "none" }}
-                src="https://www.youtube.com/embed/ObGhB9CCHP8"
+                // src="https://www.youtube.com/embed/ObGhB9CCHP8"
+                src={video}
                 allow="autoplay; fullscreen"
                 allowFullScreen
                 title="Client Testimonial Video"
