@@ -54,15 +54,15 @@ const wasteItems: WasteItem[] = [
 
 const statsData: StatCard[] = [
   { stat: "20–30%", description: "Of revenue lost to operational inefficiency in the typical U.S. manufacturing facility", source: "McKinsey Global Institute" },
-  { stat: "$8,000", description: "Average cost of one hour of unplanned downtime — and most plants aren't tracking it", source: "NIST Manufacturing Extension Partnership, 2023" },
+  { stat: "$8,000", description: "Average cost of one hour of unplanned downtime and most plants aren't tracking it", source: "NIST Manufacturing Extension Partnership, 2023" },
   { stat: "68%", description: "Of manufacturing SMBs cannot accurately measure their true cost of quality", source: "ASQ / IndustryWeek Survey, 2023" },
   { stat: "60%", description: "Of mid-market plants operate with no formal operating system — so improvements never hold", source: "McKinsey Global Institute" },
 ];
 
 const problemCards: ProblemCard[] = [
-  { icon: "🔧", rate: "AVG. 6–8% OF REVENUE", title: "Scrap & Rework", description: "Defects absorbed into overhead — never traced to root cause, never fixed." },
+  { icon: "🔧", rate: "AVG. 6–8% OF REVENUE", title: "Scrap & Rework", description: "Defects absorbed into overhead never traced to root cause, never fixed." },
   { icon: "⏱", rate: "$8,000+ PER HOUR", title: "Unplanned Downtime", description: "Equipment stops that repeat every week because no one tracks why." },
-  { icon: "🔀", rate: "30–40% LABOR WASTE", title: "Workflow Gaps", description: "Waiting, moving, searching — labor hours that add cost but zero value." },
+  { icon: "🔀", rate: "30–40% LABOR WASTE", title: "Workflow Gaps", description: "Waiting, moving, searching labor hours that add cost but zero value." },
   { icon: "📋", rate: "2–4 DAY DECISION LAG", title: "Manual Reporting", description: "Decisions made on yesterday's numbers, entered by hand into spreadsheets." },
   { icon: "📊", rate: "COMPOUNDS ANNUALLY", title: "No Operating System", description: "Strategy that never reaches the floor. Improvements that never hold." },
 ];
@@ -70,7 +70,7 @@ const problemCards: ProblemCard[] = [
 const whatWeFind: { number: string; title: string; description: string; rate: string; rateLabel: string }[] = [
   { number: "01", title: "Scrap Cost Hidden in Overhead", description: "Most plants account for scrap as a percentage of material cost and write it off. We calculate the true loaded cost: materials, labor, machine time, re-inspection, and rescheduling. The real number is almost always 2–3× what leadership assumes.", rate: "AVG. 4–8% OF GROSS REVENUE", rateLabel: "" },
   { number: "02", title: "Downtime Without Root Cause", description: "Unplanned downtime averages $8,000/hour in a mid-size facility. Without OEE tracking and root cause discipline, the same equipment fails the same way, shift after shift, year after year.", rate: "$8,000+ PER UNPLANNED HOUR", rateLabel: "NIST, 2023" },
-  { number: "03", title: "Non-Value-Added Labor Time", description: "In facilities without structured workflow design, 30–40% of direct labor hours are spent on waiting, searching, walking, or reworking — not producing. We map it, price it, and eliminate it.", rate: "30–40% OF DIRECT LABOR HOURS", rateLabel: "MANUFACTURING INSTITUTE" },
+  { number: "03", title: "Non-Value-Added Labor Time", description: "In facilities without structured workflow design, 30–40% of direct labor hours are spent on waiting, searching, walking, or reworking not producing. We map it, price it, and eliminate it.", rate: "30–40% OF DIRECT LABOR HOURS", rateLabel: "MANUFACTURING INSTITUTE" },
   { number: "04", title: "Decision Lag from Manual Data", description: "When managers receive shift data 24–48 hours late, they manage the past instead of the present. We automate data collection so leadership has real-time visibility — every shift, every line.", rate: "48HR AVERAGE DATA LAG", rateLabel: "" },
 ];
 
@@ -81,7 +81,7 @@ const services: Service[] = [
     titleLine1: "Factory Cash",
     titleLine2: "Recovery Audit™",
     titleItalic: true,
-    description: "A structured on-site investigation that quantifies every source of waste — and delivers a prioritized, dollar-valued recovery roadmap in 4–6 weeks.",
+    description: "A structured on-site investigation that quantifies every source of waste and delivers a prioritized, dollar-valued recovery roadmap in 4–6 weeks.",
     bullets: ["Full financial picture of operational waste", "Prioritized findings ranked by dollar impact", "Root cause analysis for top waste drivers", "90-day execution roadmap included"],
     cta: "REQUEST AN AUDIT",
   },
@@ -91,7 +91,7 @@ const services: Service[] = [
     titleLine1: "Implementation",
     titleLine2: "Support",
     titleItalic: true,
-    description: "We embed with your team and drive improvements from the floor up — scrap programs, workflow redesign, KPI systems, and management routines.",
+    description: "We embed with your team and drive improvements from the floor up scrap programs, workflow redesign, KPI systems, and management routines.",
     bullets: ["Scrap and rework reduction programs", "Workflow redesign and 5S implementation", "KPI boards and daily management routines", "Supervisor coaching and standard work"],
     cta: "LEARN MORE",
   },
@@ -101,7 +101,7 @@ const services: Service[] = [
     titleLine1: "FORGE™",
     titleLine2: "Operating System",
     titleItalic: false,
-    description: "Our manufacturing operating system installs the routines, KPI cascades, and accountability architecture that aligns strategy to the shop floor — permanently.",
+    description: "Our manufacturing operating system installs the routines, KPI cascades, and accountability architecture that aligns strategy to the shop floor permanently.",
     bullets: ["Strategy deployment from leadership to floor", "Daily, weekly, monthly management cadences", "Visual management infrastructure", "Problem-solving routines that build capability"],
     cta: "LEARN MORE",
   },
@@ -138,7 +138,7 @@ const clientResults: ResultCard[] = [
   {
     industry: "PLASTICS · $22M REVENUE",
     title: "KPI Visibility & FORGE™ Deployment",
-    description: "No reliable data — decisions made on instinct. FORGE™ gave the plant manager live production visibility for the first time. OEE improved from 61% to 79% in six months.",
+    description: "No reliable data decisions made on instinct. FORGE™ gave the plant manager live production visibility for the first time. OEE improved from 61% to 79% in six months.",
     metrics: [
       { value: "18%", label: "OEE GAIN" },
       { value: "$290K", label: "ANNUAL VALUE" },
@@ -148,7 +148,7 @@ const clientResults: ResultCard[] = [
   {
     industry: "ELECTRONICS ASSEMBLY · $8M REVENUE",
     title: "AI Automation of Shift Reporting",
-    description: "Supervisors spent 3–4 hours per shift manually logging data. Full reporting automation delivered real-time visibility — zero manual entry, 20 hours saved per week.",
+    description: "Supervisors spent 3–4 hours per shift manually logging data. Full reporting automation delivered real-time visibility zero manual entry, 20 hours saved per week.",
     metrics: [
       { value: "20hrs", label: "SAVED/WEEK" },
       { value: "100%", label: "AUTOMATED" },

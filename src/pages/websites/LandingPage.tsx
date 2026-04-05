@@ -636,7 +636,7 @@ export default function EverstoneSystemsLanding() {
           {/* Right */}
           <div className={`fade-up delay-2 ${isVisible("problem") ? "visible" : ""}`}>
             <p className="sans" style={{ fontSize: "14px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "20px" }}>
-              Most manufacturers between $5M and $50M are running their plant the same way they did three years ago. Margins thin. The team gets reactive. And the waste — scrap, downtime, inefficiency — gets absorbed into overhead and called "normal."
+              Most manufacturers between $5M and $50M are running their plant the same way they did three years ago. Margins thin. The team gets reactive. And the waste scrap, downtime, inefficiency gets absorbed into overhead and called "normal."
             </p>
             <p className="sans" style={{ fontSize: "14px", lineHeight: "1.8", color: "var(--text)", marginBottom: "28px" }}>
               It's not normal. <strong>It's a systems and visibility problem. And it's entirely fixable.</strong>
@@ -718,10 +718,10 @@ export default function EverstoneSystemsLanding() {
             </div>
 
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "16px" }}>
-              You're too large to run on instinct. Too lean to hire a team of internal consultants. Everstone Systems fills that gap — as your dedicated operational performance partner.
+              You're too large to run on instinct. Too lean to hire a team of internal consultants. Everstone Systems fills that gap  as your dedicated operational performance partner.
             </p>
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)" }}>
-              Over <strong style={{ color: "var(--text)" }}>98% of U.S. manufacturers</strong> employ fewer than 500 people. This group generates the backbone of American industrial output — yet receives the least access to serious operational consulting. We exist to change that.
+              Over <strong style={{ color: "var(--text)" }}>98% of U.S. manufacturers</strong> employ fewer than 500 people. This group generates the backbone of American industrial output  yet receives the least access to serious operational consulting. We exist to change that.
             </p>
           </div>
 
@@ -902,10 +902,10 @@ export default function EverstoneSystemsLanding() {
 
           <div className={`fade-up delay-2 ${isVisible("results") ? "visible" : ""}`}>
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "20px" }}>
-              Most clients come to us thinking they have a people problem. Within 30 days of the audit, they understand it's a <strong style={{ color: "var(--text)" }}>systems and visibility problem</strong> — and that it's entirely fixable.
+              Most clients come to us thinking they have a people problem. Within 30 days of the audit, they understand it's a <strong style={{ color: "var(--text)" }}>systems and visibility problem</strong>  and that it's entirely fixable.
             </p>
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "20px" }}>
-              We work exclusively with manufacturers in the $5M–$50M range. Our playbooks are built for your scale, your constraints, and your competitive environment — not adapted down from Fortune 500 programs.
+              We work exclusively with manufacturers in the $5M–$50M range. Our playbooks are built for your scale, your constraints, and your competitive environment  not adapted down from Fortune 500 programs.
             </p>
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "28px" }}>
               The U.S. Manufacturing Extension Partnership reports that companies implementing formal operational improvement programs achieve an average of{" "}
@@ -915,7 +915,7 @@ export default function EverstoneSystemsLanding() {
             <div style={{ border: "1px solid rgba(201,168,76,0.25)", padding: "24px 28px", background: "rgba(201,168,76,0.04)" }}>
               <div className="sans" style={{ fontSize: "9px", fontWeight: "600", letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: "12px" }}>Our Commitment</div>
               <p className="sans" style={{ fontSize: "13px", lineHeight: "1.75", color: "var(--text-muted)" }}>
-                If the Factory Cash Recovery Audit™ doesn't identify recoverable value exceeding our fee — you don't pay the balance. We've done this enough times to know what we'll find before we arrive.
+                If the Factory Cash Recovery Audit™ doesn't identify recoverable value exceeding our fee you don't pay the balance. We've done this enough times to know what we'll find before we arrive.
               </p>
             </div>
           </div>
