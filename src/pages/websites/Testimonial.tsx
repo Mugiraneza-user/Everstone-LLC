@@ -373,15 +373,15 @@ function Navbar() {
           
             <nav style={{ display: "flex", gap: "28px" }}>
               {navItems.map((item) => (
-                <span key={item.name} style={{ fontSize: 10, fontWeight: 500, letterSpacing: "0.14em", color: item.name === "Services" ? "var(--text-muted)" : "var(--gold)", textTransform: "uppercase", cursor: "pointer", transition: "color 0.2s" }}
+                <span key={item.name} style={{ fontSize: 10, fontWeight: 500, letterSpacing: "0.14em", color: item.name === "Testimonials" ? "var(--gold)" : "var(--text-muted)", textTransform: "uppercase", cursor: "pointer", transition: "color 0.2s" }}
                   onClick={() => {
                     setMobileMenuOpen(false);
                     if (item.name === "Services") navigate("/service");
                     if (item.name === "Testimonials") navigate("/testimony");
               }}
                
-              onMouseEnter={(e) => { if (item.name !== "Services") (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; }}
-              onMouseLeave={(e) => { if (item.name !== "Services") (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
+              onMouseEnter={(e) => { if (item.name !== "Testimonials") (e.currentTarget as HTMLElement).style.color = "var(--gold)"; }}
+              onMouseLeave={(e) => { if (item.name !== "Testimonials") (e.currentTarget as HTMLElement).style.color = "var(--text)"; }}
             >{item.name}</span>
           ))}
           </nav>

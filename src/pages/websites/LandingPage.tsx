@@ -643,6 +643,7 @@ useEffect(() => {
           ))}
         </div>
       </div>
+      
 
       {/* ── STATS STRIP ── */}
       <section
@@ -1214,7 +1215,8 @@ useEffect(() => {
                 </div>
               ))}
               <div className="sans" style={{ fontSize: "13px", color: "var(--text-muted)", marginBottom: "24px" }}>info@everstonesystems.com</div>
-              <button className="btn-primary" style={{ fontSize: "10px", padding: "12px 22px" }}>Book a Call</button>
+              <a href="https://calendly.com/everstonesystems/discovery-call" target="_blank" rel="noopener noreferrer">
+              <button className="btn-primary" style={{ fontSize: "10px", padding: "12px 22px" }}>Book a Call</button></a>
             </div>
           </div>
 
