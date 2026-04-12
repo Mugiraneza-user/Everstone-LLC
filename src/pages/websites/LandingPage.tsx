@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { wasteItems, ticker, statsData, problemCards, whatWeFind, clientResults, services, whyItems, resultsMetrics } from "../../types/api";
 import { useNavigate} from "react-router-dom";
 import logoImg from '../../assets/image/Logo 1.png';
+import video from "../../assets/image/AI Manufacture.mp4"
 
 
 export default function EverstoneSystemsLanding() {
@@ -66,6 +67,26 @@ export default function EverstoneSystemsLanding() {
     { name: "Testimonials", path: "/testimony" },
     
   ];
+const sectionRef = useRef<HTMLDivElement | null>(null);
+const [scrollProgress, setScrollProgress] = useState(0);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (!sectionRef.current) return;
+
+    const rect = sectionRef.current.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+
+    progress = Math.max(0, Math.min(progress, 1));
+
+    setScrollProgress(progress);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   return (
     <div style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", background: "#0d0d0b", color: "#e8e0d0", minHeight: "100vh", overflowX: "hidden" }}>
@@ -419,7 +440,56 @@ export default function EverstoneSystemsLanding() {
           </a>
         </div>
       )}
+        
+       <section style={{marginTop:"90px"}}>
+  <div
+    style={{
+      position:"sticky",
+      top: "10px",
+      height: "80vh",
+      display:"flex",
+      alignItems: "center",
+      justifyContent: "center",
+      
+      
+    }}
+  >
+    <div
+      className="hero-video"
+      style={{
+        width: "70%",
+        height: "80vh",
+        opacity: 1 - scrollProgress,
+        transform: `scale(${1 - scrollProgress * 0.2})`,
+        transition: "opacity 0.1s linear, transform 0.1s linear",
+      }}
+    >
+      <video
+        src={video}
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
+    </div>
 
+    {/* Optional dark overlay */}
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: "rgba(0,0,0,0.4)",
+        opacity: 1 - scrollProgress,
+        transition: "opacity 0.2s",
+      }}
+    />
+  </div>
+</section>
 
       {/* ── HERO ── */}
       <section
@@ -432,9 +502,12 @@ export default function EverstoneSystemsLanding() {
           gap: "64px",
           maxWidth: "1440px",
           margin: "0 auto",
+          // opacity: scrollProgress, // 👈 KEY
+          // transform: `translateY(${60 * (1 - scrollProgress)}px)`, // 👈 smooth slide
+          // transition: "all 0.3s ease",
         }}
         className="hero-grid"
-      >
+       >
         {/* Left */}
         <div>
           <div className="section-label" style={{ marginBottom: "24px" , color:"var(--gold)" }}>
@@ -682,14 +755,14 @@ export default function EverstoneSystemsLanding() {
       </section>
 
       {/* ── WHO WE SERVE ── */}
-      <section
+      {/* <section
         id="who"
         ref={setRef("who")}
         style={{ background: "var(--bg-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
-      >
-        <div style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}>
+          >
+        <div style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }}> */}
           {/* Left */}
-          <div className={`fade-up ${isVisible("who") ? "visible" : ""}`}>
+          {/* <div className={`fade-up ${isVisible("who") ? "visible" : ""}`}>
             <div className="section-label">Who We Serve</div>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 4vw, 60px)", fontWeight: "300", lineHeight: "1.1", color: "#fff", marginBottom: "32px" }}>
               Built for the
@@ -723,10 +796,10 @@ export default function EverstoneSystemsLanding() {
             <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)" }}>
               Over <strong style={{ color: "var(--text)" }}>98% of U.S. manufacturers</strong> employ fewer than 500 people. This group generates the backbone of American industrial output  yet receives the least access to serious operational consulting. We exist to change that.
             </p>
-          </div>
+          </div> */}
 
           {/* Right — Industries */}
-          <div className={`fade-up delay-2 ${isVisible("who") ? "visible" : ""}`}>
+          {/* <div className={`fade-up delay-2 ${isVisible("who") ? "visible" : ""}`}>
             <div className="sans" style={{ fontSize: "10px", fontWeight: "500", letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: "24px", display: "flex", alignItems: "center", gap: "14px" }}>
               <span style={{ width: "32px", height: "1px", background: "var(--gold)", display: "inline-block" }} />
               Industries We Work In
@@ -756,7 +829,7 @@ export default function EverstoneSystemsLanding() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── WHAT WE FIND ── */}
       <section

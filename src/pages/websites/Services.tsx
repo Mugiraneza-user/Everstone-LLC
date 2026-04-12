@@ -621,8 +621,10 @@ function Footer() {
 export default function ServicesPage() {
   const refs = useRef<Map<string, HTMLElement>>(new Map());
   const setRef = (id: string) => (el: HTMLElement | null) => { if (el) refs.current.set(id, el); };
-
+  // const [visibleSections, ] = useState<Set<string>>(new Set())
+  // const isVisible = (id: string) => visibleSections.has(id);
   const heroV = useVisible("hero", refs);
+  const whoV = useVisible("who", refs);
   const overviewV = useVisible("overview", refs);
   const processV = useVisible("process", refs);
   const compareV = useVisible("compare", refs);
@@ -810,6 +812,86 @@ export default function ServicesPage() {
         </section>
       ))}
 
+      {/* ── WHO WE SERVE ── */}
+      <section
+        id="who"
+        ref={setRef("who")}
+        style={{ background: "var(--bg-card)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
+      >
+        <div style={{ padding: "120px 48px", maxWidth: "1440px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat (auto-fit, minmax(300px, 1fr))", gap: "80px", alignItems: "start" }}>
+          {/* Left */}
+          {/* <div  className="fade-up visible">  */}
+            <div className={`fade-up ${whoV ? "visible" : ""}`}>
+            
+            <div className="section-label">Who We Serve</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 4vw, 60px)", fontWeight: "300", lineHeight: "1.1", color: "#fff", marginBottom: "32px" }}>
+              Built for the
+              <br />
+              mid-market
+              <br />
+              <em style={{ color: "var(--gold)", fontStyle: "italic" }}>manufacturer.</em>
+            </h2>
+
+            <div
+              style={{
+                border: "1px solid var(--border)",
+                padding: "24px 28px",
+                background: "rgba(201,168,76,0.03)",
+                marginBottom: "32px",
+                display: "flex",
+                gap:"9px",
+              }}
+            >
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "32px", fontWeight: "300", color: "var(--gold)", marginBottom: "8px" }}>$5M – $50M</div>
+              <div className="sans" style={{ fontSize: "11px", letterSpacing: "0.12em" , color: "var(--text-muted)" }}>
+                Annual manufacturing revenue
+                <br />
+                Our exclusive focus
+              </div>
+            </div>
+
+            <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)", marginBottom: "16px" }}>
+              You're too large to run on instinct. Too lean to hire a team of internal consultants. Everstone Systems fills that gap  as your dedicated operational performance partner.
+            </p>
+            <p className="sans" style={{ fontSize: "13px", lineHeight: "1.8", color: "var(--text-muted)" }}>
+              Over <strong style={{ color: "var(--text)" }}>98% of U.S. manufacturers</strong> employ fewer than 500 people. This group generates the backbone of American industrial output  yet receives the least access to serious operational consulting. We exist to change that.
+            </p>
+          </div>
+
+          {/* Right — Industries */}
+          <div className={`fade-up d2 ${whoV ? "visible" : ""}`}>
+            {/* <div className="fade-up visible"> */}
+            <div className="sans" style={{ fontSize: "10px", fontWeight: "500", letterSpacing: "0.2em", color: "var(--gold)", textTransform: "uppercase", marginBottom: "24px", display: "flex", alignItems: "center", gap: "14px" }}>
+              <span style={{ width: "32px", height: "1px", background: "var(--gold)", display: "inline-block" }} />
+              Industries We Work In
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1px", background: "var(--border)" }}>
+              {[
+                { icon: "⚙️", name: "Metal Fabrication", sub: "Sheet metal, structural, precision parts" },
+                { icon: "🧪", name: "Plastics & Composites", sub: "Injection molding, extrusion, thermoforming" },
+                { icon: "🔌", name: "Electronics Assembly", sub: "PCB, wiring harnesses, controls" },
+                { icon: "🏭", name: "Industrial Equipment", sub: "Machines, enclosures, systems" },
+                { icon: "📦", name: "Packaging & Converting", sub: "Flexible, rigid, printing" },
+                { icon: "🔩", name: "Machined Components", sub: "CNC, turning, grinding" },
+              ].map((ind, i) => (
+                <div
+                  key={i}
+                  className="card-hover"
+                  style={{ background: "var(--bg)", padding: "24px 22px", display: "flex", alignItems: "flex-start", gap: "14px" }}
+                >
+                  <span style={{ fontSize: "20px", marginTop: "2px", flexShrink: 0 }}>{ind.icon}</span>
+                  <div>
+                    <div style={{ fontSize: "15px", fontWeight: "400", color: "var(--text)", marginBottom: "4px" }}>{ind.name}</div>
+                    <div className="sans" style={{ fontSize: "11px", color: "var(--text-muted)", lineHeight: "1.5" }}>{ind.sub}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ── */}
       <section id="process" ref={setRef("process")} style={{ padding: "120px 48px", background: "var(--bg)", borderBottom: "1px solid var(--border)" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
@@ -843,6 +925,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      
 
       {/* ── INTEGRATED MODEL CALLOUT ── */}
       <section id="compare" ref={setRef("compare")} style={{ padding: "120px 48px", background: "var(--bg-card)", borderBottom: "1px solid var(--border)" }}>
