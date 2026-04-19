@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { wasteItems, ticker, statsData, problemCards, whatWeFind, clientResults, services, whyItems, resultsMetrics } from "../../types/api";
 import { useNavigate} from "react-router-dom";
 import logoImg from '../../assets/image/Logo 1.png';
-import video from "../../assets/image/AI Manufacture.mp4"
+import video from "../../assets/image/Top 5.mp4"
 
 
 export default function EverstoneSystemsLanding() {
